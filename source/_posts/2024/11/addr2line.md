@@ -9,7 +9,7 @@ poster:
   caption: null
   color: null
 date: 2024-11-10 22:39:55
-topic:
+topic: linux_tool
 description:
 cover:
 banner:
