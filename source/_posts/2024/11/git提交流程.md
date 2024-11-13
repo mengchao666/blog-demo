@@ -115,18 +115,23 @@ git push origin 新分支名称
 
 使用checkout恢复工作区 `git checkout .` （全部修改），`git checkout --file`改回一个文件,工作区--->还没add
 
-### add 和 commit 的撤销
+### add的撤销
+git reset就是回退到指定的commitID,,使用git commit --amend时追加，不会生成新的commitID,是在原来的commitID基础上进行修改的。
+
+HEAD指向当前最新的commitID，所以仅仅add,没有commit，此时的最新的commitID还是之前的
+
+```shell
+git reset --hard HEAD  // 不保留本地修改，回退
+git reset --mixed HEAD //保留本地修改，可以重新git add
+```
+简单理解git reset --xxx HEAD命令，就是将代码回退到了最新的一次commitID的代码状态，hard不保留本地代码工作空间的修改，而mixed保留
+### commit后的撤销 
 
 ```c
-git reset HEAD filename  把这个file移除暂缓区，其实就是相当于没用add这个file 
-
-git reset --soft HEAD^   ^为最近一次 ^2为上上次  HEAD可以变为指定版本号 
---mixed 不删除工作空间改动代码，撤销commit，并且撤销git add . 
---soft  不删除工作空间改动代码，撤销commit，不撤销git add .  
---hard  删除工作空间改动代码 工作区回退到最近一次commit状态
+git reset --hard HEAD^ // 不保留本地修改，回退到上一次的commitID状态
+git reset --mixed HEAD^ // 保留本地修改，撤销git commit,并且撤销git add
+git reset --soft HEAD^ //保留本地修改，撤销commit,不撤销add
 ```
-
-撤掉add HEAD 撤掉commit HEAD^
 
 ## 六、git的一些其他操作
 
@@ -141,3 +146,30 @@ git reset --soft HEAD^   ^为最近一次 ^2为上上次  HEAD可以变
 `git submodule update --init --remote`
 `git submodule foreach git checkout branch`
 `git submodule foreach --recursive`
+
+## 七、同时提交两个MR
+
+当我们同时修改多个问题单，或者同时处理需求时，可能需要同时提交多分不同代码，此时处理方法如下：
+
+1、本地创建一个新的分支来处理第一个MR
+```shell
+git checkout -b mr1-branch
+```
+2、提交第一个MR。
+修改代码，git add、git commit，git push
+```shell
+git push -u origin mr1-branch
+```
+3、切换回原来的分支，以main分支为例
+```shell
+git checkout main
+```
+4、创建第二个分支处理第二个MR
+```shell
+git checkout -b mr2-branch
+```
+5、提交第二个MR。
+修改代码，git add、git commit，git push
+```shell
+git push -u origin mr2-branch
+```
