@@ -1,0 +1,4 @@
+name: leetcode总结 # 在面包屑导航上会显示较短的名字
+title: LeetCode各类型题目总结 # 在列表页会显示完整的专栏标题
+description: 个人根据做LeetCode网站题目的各类型题目总结
+order_by: -date # 默认是按发布日期倒序排序
