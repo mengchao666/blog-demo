@@ -1,7 +1,7 @@
 ---
 title: dd命令
-tags: []
-categories: []
+tags: [Linux工具]
+categories: [Linux工具]
 permalink: 
 poster:
   topic: null
