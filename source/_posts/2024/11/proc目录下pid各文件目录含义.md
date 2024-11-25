@@ -2,7 +2,7 @@
 title: proc目录下pid各文件目录含义
 tags: [Linux]
 categories: [Linux]
-permalink: posts/1.html
+permalink: 
 poster:
   topic: null
   headline: null
