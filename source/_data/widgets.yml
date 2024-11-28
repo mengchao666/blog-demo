@@ -2,7 +2,7 @@ welcome:
   layout: markdown
   title: 欢迎欢迎
   content: |
-    本站是 mengchao666 的知识库和项目集合站，希望您在这里玩的开心。
+    本站是 菜鸟 的知识库和项目集合站，希望您在这里玩的开心。
 
 hitokoto:
   layout: markdown
